@@ -11,6 +11,7 @@ jQuery(document).ready(function ($) {
     var wordspace = 0;
     var loopIt = true;
     var ispaused = false;
+    var punctuationcounter = 0;
     var wordlength;
     var leftoffset;
     var fadecounter;
@@ -42,88 +43,96 @@ jQuery(document).ready(function ($) {
 
     function ChangeWord() {
         if(!ispaused){
+            if(punctuationcounter <= 0){
             
-            var wordlength = 0;
-            if(textarray[wordspace]){wordlength = textarray[wordspace].length;}
-            var perfectspot = Math.ceil((wordlength / 2) - 1);
-            var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-            var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
-            $('#wordbox').html(finalval);
-    
-    		var wordwidth = $( '#wordbox' ).width();
-    		switch(wordlength){
-                case 1:
-                    var leftoffset = '-'+(wordwidth*.5)+'px';
-                break;
-                case 2:
-                    var leftoffset = '-'+(wordwidth*.25)+'px';
-                break;
-                case 3:
-                    var leftoffset = '-'+(wordwidth*.5)+'px';
-                break;
-                case 4:
-                    var leftoffset = '-'+(wordwidth*.35)+'px';
-                break;
-                case 5:
-                    var leftoffset = '-'+(wordwidth*.47)+'px';
-                break;
-                case 6:
-                    var leftoffset = '-'+(wordwidth*.40)+'px';
-                break;
-                case 7:
-                    var leftoffset = '-'+(wordwidth*.42)+'px';
-                    var perfectspot = Math.ceil((wordlength / 2) - 2);
-                    var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                    var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
-                    $('#wordbox').html(finalval);
-                break;
-                case 8:
-                    var leftoffset = '-'+(wordwidth*.38)+'px';
-                    var perfectspot = Math.ceil((wordlength / 2) - 2);
-                    var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                    var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
-                    $('#wordbox').html(finalval);
-                break;
-                case 9:
-                    var leftoffset = '-'+(wordwidth*.31)+'px';
-                    var perfectspot = Math.ceil((wordlength / 2) - 3);
-                    var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                    var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
-                    $('#wordbox').html(finalval);
-                break;
-                case 10:
-                    var leftoffset = '-'+(wordwidth*.29)+'px';
-                    var perfectspot = Math.ceil((wordlength / 2) - 3);
-                    var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                    var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
-                    $('#wordbox').html(finalval);
-                break;
-                case 11:
-                    var leftoffset = '-'+(wordwidth*.35)+'px';
-                    var perfectspot = Math.ceil((wordlength / 2) - 3);
-                    var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                    var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
-                    $('#wordbox').html(finalval);
-                break;
-                default:
-                    var leftoffset = '-'+(wordwidth*.35)+'px';
-                    var perfectspot = Math.ceil((wordlength / 2) - 3);
-                    var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                    var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
-                    $('#wordbox').html(finalval);
-            }
-    		$('#wordbox').css('left', leftoffset);
+                if(textarray[wordspace].toLowerCase().indexOf(".") >= 0 || textarray[wordspace].toLowerCase().indexOf("?") >= 0 || textarray[wordspace].toLowerCase().indexOf(",") >= 0 || textarray[wordspace].toLowerCase().indexOf(";") >= 0 || textarray[wordspace].toLowerCase().indexOf("!") >= 0 || textarray[wordspace].toLowerCase().indexOf('"') >= 0){
+                    punctuationcounter++; 
+                }
 
+                var wordlength = 0;
+                if(textarray[wordspace]){wordlength = textarray[wordspace].length;}
+                var perfectspot = Math.ceil((wordlength / 2) - 1);
+                var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
+                var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                $('#wordbox').html(finalval);
+        
+                var wordwidth = $( '#wordbox' ).width();
+                switch(wordlength){
+                    case 1:
+                        var leftoffset = '-'+(wordwidth*.5)+'px';
+                    break;
+                    case 2:
+                        var leftoffset = '-'+(wordwidth*.25)+'px';
+                    break;
+                    case 3:
+                        var leftoffset = '-'+(wordwidth*.5)+'px';
+                    break;
+                    case 4:
+                        var leftoffset = '-'+(wordwidth*.35)+'px';
+                    break;
+                    case 5:
+                        var leftoffset = '-'+(wordwidth*.47)+'px';
+                    break;
+                    case 6:
+                        var leftoffset = '-'+(wordwidth*.40)+'px';
+                    break;
+                    case 7:
+                        var leftoffset = '-'+(wordwidth*.42)+'px';
+                        var perfectspot = Math.ceil((wordlength / 2) - 2);
+                        var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        $('#wordbox').html(finalval);
+                    break;
+                    case 8:
+                        var leftoffset = '-'+(wordwidth*.38)+'px';
+                        var perfectspot = Math.ceil((wordlength / 2) - 2);
+                        var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        $('#wordbox').html(finalval);
+                    break;
+                    case 9:
+                        var leftoffset = '-'+(wordwidth*.31)+'px';
+                        var perfectspot = Math.ceil((wordlength / 2) - 3);
+                        var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        $('#wordbox').html(finalval);
+                    break;
+                    case 10:
+                        var leftoffset = '-'+(wordwidth*.29)+'px';
+                        var perfectspot = Math.ceil((wordlength / 2) - 3);
+                        var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        $('#wordbox').html(finalval);
+                    break;
+                    case 11:
+                        var leftoffset = '-'+(wordwidth*.35)+'px';
+                        var perfectspot = Math.ceil((wordlength / 2) - 3);
+                        var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        $('#wordbox').html(finalval);
+                    break;
+                    default:
+                        var leftoffset = '-'+(wordwidth*.35)+'px';
+                        var perfectspot = Math.ceil((wordlength / 2) - 3);
+                        var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        $('#wordbox').html(finalval);
+                }
+                $('#wordbox').css('left', leftoffset);
 
-            fadecounter++;
-            if(fadecounter >= fadelimit){
-            	$('#insertText').fadeOut('slow');
+                wordspace++;
+                if(wordspace >= textarray.length && loopIt == true) {
+                    wordspace = 0;
+                }
+            }else{
+                punctuationcounter--;
+
             }
 
-            wordspace++;
-           	if(wordspace >= textarray.length && loopIt == true) {
-                wordspace = 0;
-            }
+        }
+        fadecounter++;
+        if(fadecounter >= fadelimit){
+            $('#insertText').fadeOut('slow');
         }
     }
 
