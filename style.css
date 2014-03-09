@@ -104,35 +104,46 @@ html, body{
 }
 #wordbox {
     position:absolute;
-    top:-35px;
+    top:-32px;
     left:0px;
-    z-index:2;
+    z-index:3;
     white-space:nowrap;
     font-size:60px;
     height:60px;
-	/*	-webkit-transition: all 100ms ease;
+        /*
+		-webkit-transition: all 100ms ease;
 		-moz-transition: all 100ms ease;
 		-ms-transition: all 100ms ease;
 		-o-transition: all 100ms ease;
-		transition: all 100ms ease;*/
+		transition: all 100ms ease;
+        */
 }
 #whitebg {
 	font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 	height:75px;
-    width:5000px;
+    width:430px;
     position:absolute;
-    left:-2500px;
+    left:-215px;
     top:-37px;
-    z-index:1;
+    z-index:2;
     background:#fff;
 }
 #spotmarker {
     position:absolute;
     left:0;
-    top:-2500px;
-    z-index:0;
+    top:-55px;
+    z-index:1;
     width:5px;
-    height:5000px;
+    height:110px;
+    background-color:#ff0000;
+}
+#lines {
+    position:absolute;
+    left:-210px;
+    top:-45px;
+    z-index:0;
+    width:420px;
+    height:90px;
     background-color:#000;
 }
 #textvalue {
@@ -166,7 +177,7 @@ html, body{
 	float:left;
 }
 #textSubmit{
-	width:29%;
+	width:32%;
 	height:40px;
 	background:#eee;
 	float:left;
