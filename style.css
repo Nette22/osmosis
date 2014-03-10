@@ -120,11 +120,11 @@ html, body{
 }
 #whitebg {
 	font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
-	height:75px;
+	height:80px;
     width:430px;
     position:absolute;
     left:-215px;
-    top:-37px;
+    top:-40px;
     z-index:2;
     background:#fff;
 }
@@ -150,16 +150,13 @@ html, body{
     visibility:hidden;
 }
 #insertText{
-	width:100%;
-	position:absolute;
-	bottom:0;
-    margin:0;
-    padding:0;
+    overflow:auto;
 }
 #textPlace{
-	width:100%;
-	min-width:500px;
-	height:40px;
+    margin:10px;
+	width:70%;
+    min-width:275px;
+	height:100px;
 	background:#eee;
 	float:left;
 	overflow-x:hidden;
@@ -171,28 +168,56 @@ html, body{
 		transition: all 2000ms ease;
 }
 #wpmPlace{
-	width:29%;
+	width:75px;
 	height:40px;
 	background:#eee;
 	float:left;
 }
 #textSubmit{
-	width:32%;
+    margin:10px;
+	width:75px;
 	height:40px;
 	background:#eee;
 	float:left;
 }
 #sizePlace{
-	width:29%;
+	width:75px;
 	height:40px;
 	background:#eee;
 	float:left;
 }
 #colorPlace{
-	width:10%;
+	width:75px;
 	height:40px;
 	background:#eee;
 	float:left;	
+}
+#settingsPanel{
+    width:100%;
+    z-index:8;
+    position:absolute;
+    background:rgba(100,100,100,0.75);
+    border-top:1px solid #000;
+    bottom:0;
+    margin:0;
+}
+fieldset.sm{
+    float:left;
+    width:75px;
+    margin:10px;
+}
+fieldset.md{
+    float:left;
+    width:125px;
+    margin:10px;
+}
+fieldset.lg{
+    float:left;
+    width:200px;
+    margin:10px;
+}
+.black {
+    color:#000000!important;
 }
 .red {
     color:#ff1111!important;
@@ -205,4 +230,11 @@ html, body{
 }
 .purple {
     color:#660033!important;
+}
+.clearfix{
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
 }

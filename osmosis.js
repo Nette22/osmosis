@@ -11,6 +11,7 @@ jQuery(document).ready(function ($) {
     var wordspace = 0;
     var loopIt = true;
     var ispaused = false;
+    var ishelpers;
     var punctuationcounter = 0;
     var wordlength;
     var leftoffset;
@@ -29,10 +30,12 @@ jQuery(document).ready(function ($) {
     	$('#centermaker').removeClass();
     	$('#centermaker').addClass(textScale);
     	colorclass = $( "#colorPlace" ).val();
+        ishelpers = $('input:radio[name=helpers]:checked').val();
         ChangeColor();
         SetLineWidth();
+        SetHelpers();
     	wpm = $('#wpmPlace').val();
-    	if(!wpm){wpm=150;}
+    	if(!wpm){wpm=150;$('#wpmPlace').val(wpm);}
     	wpmMS = 60000/wpm;
     	fadecounter = fadelimit;
 
@@ -132,7 +135,7 @@ jQuery(document).ready(function ($) {
         }
         fadecounter++;
         if(fadecounter >= fadelimit){
-            $('#insertText').fadeOut('slow');
+            $('#settingsPanel').fadeOut('slow');
         }
     }
 
@@ -141,21 +144,20 @@ jQuery(document).ready(function ($) {
             case 'red':
                 $('#spotmarker').css('background-color','#ff1111');
             break;
-
+            case 'black':
+                $('#spotmarker').css('background-color','#000000');
+            break;
             case 'blue':
                 $('#spotmarker').css('background-color','#0022ff');
             break;
-
             case 'purple':
                 $('#spotmarker').css('background-color','#660033');
             break;
-
             case 'green':
                 $('#spotmarker').css('background-color','#118811');
             break;
-
             default:
-                $('#spotmarker').css('background-color','#ff1111');
+                $('#spotmarker').css('background-color','#000000');
         }
     }
 
@@ -175,44 +177,58 @@ jQuery(document).ready(function ($) {
         return s.substring(0, n) + t + s.substring(n + 1);
     }
 
+    function SetHelpers(){
+        switch(ishelpers){
+            case 'on':
+                $('#lines').fadeIn();
+                $('#spotmarker').fadeIn();
+            break;
+            case 'off':
+                $('#lines').fadeOut();
+                $('#spotmarker').fadeOut();
+            break;
+            default:
+        }
+    }
+
     function SetLineWidth(){
         textScale = $( "#sizePlace" ).val();
-        var winwide = $( window ).width();
+        var winmaster = $( window ).width();
 
         if(textScale == 'largest'){
-            var winwide = $( window ).width()/4;
+            winmaster = winmaster/4;
         }else if(textScale == 'large'){
-            var winwide = $( window ).width()/3;
+            winmaster = winmaster/3;
         }else if(textScale == 'medium'){
-            var winwide = $( window ).width()/2;
+            winmaster = winmaster/2;
         }else{
-            var winwide = $( window ).width();
+            winmaster = winmaster;
         }
-        $('#lines').css('width', winwide+'px').css('left','-'+(winwide/2)+'px');
-        $('#whitebg').css('width', winwide+'px').css('left','-'+(winwide/2)+'px');
+        $('#lines').css('width', winmaster+'px').css('left','-'+(winmaster/2)+'px');
+        $('#whitebg').css('width', winmaster+'px').css('left','-'+(winmaster/2)+'px');
     }
 
 	//------------------------------LISTENERS------------------------------
     $('#textPlace').focus(function( event ) {
         fadecounter=0;
-        $('#insertText').show();
+        $('#settingsPanel').show();
     });
     $('#wpmPlace').focus(function( event ) {
         fadecounter=0;
-        $('#insertText').show();
+        $('#settingsPanel').show();
     });
     $('#sizePlace').focus(function( event ) {
         fadecounter=0;
-        $('#insertText').show();
+        $('#settingsPanel').show();
     });
 
     $(window).mousemove(function( event ) {
         fadecounter=0;
-        $('#insertText').show();
+        $('#settingsPanel').show();
     });
 
     //prevent form submission
-    $('#insertText').submit(function (evt) {
+    $('#settingsPanel').submit(function (evt) {
         evt.preventDefault();
         ispaused = false;
         InitThatShit();
