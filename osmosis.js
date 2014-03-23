@@ -21,6 +21,8 @@ jQuery(document).ready(function ($) {
 	//------------------------------FUNCTIONS------------------------------
 
     function OnLoad() {
+        //IF GET DATA EXISTS, AUTOPLAY
+        if(get_var.length > 1){$('#textPlace').val(get_var);ispaused = false;InitThatShit();}
         SetLineWidth();
     }
     OnLoad();

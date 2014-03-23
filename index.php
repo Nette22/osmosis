@@ -50,5 +50,12 @@
 		</form>
 	</div>
 </body>
+<script type="text/javascript">
+	var get_var;
+	get_var = <?php
+	$text_data = (isset($_POST['textdata']) ? $_POST['textdata'] : null);
+	print '"' . $text_data . '"';
+		?>;
+</script>
 <script type="text/javascript" src="osmosis.js"></script>
 </html>
