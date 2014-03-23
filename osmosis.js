@@ -91,42 +91,42 @@ jQuery(document).ready(function ($) {
                         var leftoffset = '-'+(wordwidth*.42)+'px';
                         var perfectspot = Math.ceil((wordlength / 2) - 2);
                         var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span style="color:'+lettercolor+';">' + oldletter + '</span>');
                         $('#wordbox').html(finalval);
                     break;
                     case 8:
                         var leftoffset = '-'+(wordwidth*.38)+'px';
                         var perfectspot = Math.ceil((wordlength / 2) - 2);
                         var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span style="color:'+lettercolor+';">' + oldletter + '</span>');
                         $('#wordbox').html(finalval);
                     break;
                     case 9:
                         var leftoffset = '-'+(wordwidth*.31)+'px';
                         var perfectspot = Math.ceil((wordlength / 2) - 3);
                         var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span style="color:'+lettercolor+';">' + oldletter + '</span>');
                         $('#wordbox').html(finalval);
                     break;
                     case 10:
                         var leftoffset = '-'+(wordwidth*.29)+'px';
                         var perfectspot = Math.ceil((wordlength / 2) - 3);
                         var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span style="color:'+lettercolor+';">' + oldletter + '</span>');
                         $('#wordbox').html(finalval);
                     break;
                     case 11:
                         var leftoffset = '-'+(wordwidth*.35)+'px';
                         var perfectspot = Math.ceil((wordlength / 2) - 3);
                         var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span style="color:'+lettercolor+';">' + oldletter + '</span>');
                         $('#wordbox').html(finalval);
                     break;
                     default:
                         var leftoffset = '-'+(wordwidth*.35)+'px';
                         var perfectspot = Math.ceil((wordlength / 2) - 3);
                         var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                        var finalval = replaceAt(textarray[wordspace], perfectspot, '<span style="color:'+lettercolor+';">' + oldletter + '</span>');
                         $('#wordbox').html(finalval);
                 }
                 $('#wordbox').css('left', leftoffset);
@@ -223,7 +223,8 @@ jQuery(document).ready(function ($) {
     //on click within body
     $('body').click(function(e){
         var theID = $(e.target).attr('id');
-        if(theID != 'wpmPlace' && theID != 'sizePlace' && theID != 'colorPlace' && theID != 'textSubmit' && theID != 'textPlace'){
+        var theClass = $(e.target).attr('class');
+        if(theID != 'wpmPlace' && theID != 'sizePlace' && theClass != 'colorpicker' && theID != 'colorPlace' && theID != 'textSubmit' && theID != 'textPlace'){
             PauseUnpause();
         }
     });

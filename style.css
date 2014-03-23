@@ -234,3 +234,6 @@ fieldset.lg{
     height: 0;
     clear: both;
 }
+.colorpicker{
+    z-index:100;
+}

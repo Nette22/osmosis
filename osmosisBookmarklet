@@ -23,4 +23,4 @@ javascript:(function(){
 post_to_url(
   'http://suskitech.org/osmosis/', 
   {textdata:s});
-})()
+})();
