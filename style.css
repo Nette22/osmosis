@@ -135,7 +135,7 @@ html, body{
     z-index:1;
     width:5px;
     height:110px;
-    background-color:#ff0000;
+    background-color:#000;
 }
 #lines {
     position:absolute;
@@ -192,6 +192,17 @@ html, body{
 	background:#eee;
 	float:left;	
 }
+#bookmarklet{
+    text-decoration: none;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    width: 100px;
+    margin-top: 16px;
+    height: 40px;
+    background: rgba(100,100,100,0.75);
+    float: left;
+}
 #settingsPanel{
     width:100%;
     z-index:8;
@@ -215,21 +226,6 @@ fieldset.lg{
     float:left;
     width:200px;
     margin:10px;
-}
-.black {
-    color:#000000!important;
-}
-.red {
-    color:#ff1111!important;
-}
-.green {
-    color:#118811!important;
-}
-.blue {
-    color:#0022ff!important;
-}
-.purple {
-    color:#660033!important;
 }
 .clearfix{
     content: " ";

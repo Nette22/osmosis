@@ -4,8 +4,8 @@ jQuery(document).ready(function ($) {
     var textstring;
     var textarray;
     var textScale;
-    var colorclass;
     var nIntervId;
+    var lettercolor;
     var wpm;
     var wpmMS;
     var wordspace = 0;
@@ -23,6 +23,14 @@ jQuery(document).ready(function ($) {
     function OnLoad() {
         //IF GET DATA EXISTS, AUTOPLAY
         if(get_var.length > 1){$('#textPlace').val(get_var);ispaused = false;InitThatShit();}
+        $('#colorPlace').ColorPicker({
+            onChange: function (hsb, hex, rgb) {
+                $('#spotmarker').css('background-color', '#' + hex);
+                $('#colorLetter').css('color', '#' + hex);
+                $('#colorPlace').val('#' + hex)
+                lettercolor = '#' + hex;
+            }
+        });
         SetLineWidth();
     }
     OnLoad();
@@ -31,13 +39,11 @@ jQuery(document).ready(function ($) {
     	textScale = $( "#sizePlace" ).val();
     	$('#centermaker').removeClass();
     	$('#centermaker').addClass(textScale);
-    	colorclass = $( "#colorPlace" ).val();
         ishelpers = $('input:radio[name=helpers]:checked').val();
-        ChangeColor();
         SetLineWidth();
         SetHelpers();
     	wpm = $('#wpmPlace').val();
-    	if(!wpm){wpm=150;$('#wpmPlace').val(wpm);}
+    	if(!wpm){wpm=250;$('#wpmPlace').val(wpm);}
     	wpmMS = 60000/wpm;
     	fadecounter = fadelimit;
 
@@ -58,7 +64,7 @@ jQuery(document).ready(function ($) {
                 if(textarray[wordspace]){wordlength = textarray[wordspace].length;}
                 var perfectspot = Math.ceil((wordlength / 2) - 1);
                 var oldletter = textarray[wordspace].substring(perfectspot + 1, perfectspot);
-                var finalval = replaceAt(textarray[wordspace], perfectspot, '<span class="'+colorclass+'">' + oldletter + '</span>');
+                var finalval = replaceAt(textarray[wordspace], perfectspot, '<span style="color:'+lettercolor+';">' + oldletter + '</span>');
                 $('#wordbox').html(finalval);
         
                 var wordwidth = $( '#wordbox' ).width();
@@ -138,28 +144,6 @@ jQuery(document).ready(function ($) {
         fadecounter++;
         if(fadecounter >= fadelimit){
             $('#settingsPanel').fadeOut('slow');
-        }
-    }
-
-    function ChangeColor() {
-        switch(colorclass){
-            case 'red':
-                $('#spotmarker').css('background-color','#ff1111');
-            break;
-            case 'black':
-                $('#spotmarker').css('background-color','#000000');
-            break;
-            case 'blue':
-                $('#spotmarker').css('background-color','#0022ff');
-            break;
-            case 'purple':
-                $('#spotmarker').css('background-color','#660033');
-            break;
-            case 'green':
-                $('#spotmarker').css('background-color','#118811');
-            break;
-            default:
-                $('#spotmarker').css('background-color','#000000');
         }
     }
 

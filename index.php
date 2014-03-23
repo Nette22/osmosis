@@ -2,6 +2,8 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<link rel="stylesheet" media="screen" type="text/css" href="css/colorpicker.css" />
+		<script type="text/javascript" src="js/colorpicker.js"></script>
 	</head>
 <body>
     <div id="centermaker" class="default">
@@ -36,14 +38,9 @@
 			</fieldset>
 			<fieldset class="sm">
 				<label>Color:</label>
-				<select id="colorPlace">
-					<option value="black">Black</option>
-					<option value="red">Red</option>
-					<option value="green" >Green</option>
-					<option value="blue" >Blue</option>
-					<option value="purple" >Purple</option>
-				</select>
+				<input type="color" name="colorplace" id="colorPlace">
 			</fieldset>
+			<a id="bookmarklet" href="<?php include 'osmosisBookmarklet';?>" title="drag this link to your toolbar and click it to quickly read selected text with osmosis.">Osmosis Bookmarklet</a>
 			<div class="clearfix">&nbsp;</div>
 			<textarea id="textPlace" value="" placeholder="Please Insert Data..."></textarea>
 			<input type="submit" id="textSubmit" value="Read!">
